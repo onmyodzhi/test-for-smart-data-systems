@@ -19,7 +19,7 @@
 Проект использует следующие технологии:
 
 - **Java 17**
-- **Spring Boot 2.x**
+- **Spring Boot 3.3.5**
 - **Spring Security** для реализации OAuth2.0
 - **PostgreSQL** для хранения данных
 - **Keycloak** для управления пользователями и аутентификацией
@@ -77,7 +77,7 @@ curl -X POST http://localhost:4141/auth \
 Для получения данных о студенте по его ID отправьте GET-запрос:
 
 ```bash
-curl -X GET http://localhost:4141/students/{id} \
+curl -X GET http://localhost:4141/v1/students/{id} \
     -H "Authorization: Bearer {your_access_token}"
 ```
 
@@ -88,7 +88,7 @@ curl -X GET http://localhost:4141/students/{id} \
 Для получения данных о студенте по его ID отправьте GET-запрос:
 
 ```bash
-curl -X GET http://localhost:4141/students \
+curl -X GET http://localhost:4141/v1/students \
     -H "Authorization: Bearer {your_access_token}"
 ```
 
@@ -99,7 +99,7 @@ curl -X GET http://localhost:4141/students \
 Для создания нового студента отправьте PUT-запрос:
 
 ```bash
-curl -X PUT http://localhost:4141/students \
+curl -X PUT http://localhost:4141/v1/students \
     -H "Authorization: Bearer {your_access_token}" \
     -H "Content-Type: application/json" \
     -d '{
@@ -119,7 +119,7 @@ curl -X PUT http://localhost:4141/students \
 Для обновления информации о студенте отправьте POST-запрос:
 
 ```bash
-curl -X POST http://localhost:4141/students \
+curl -X POST http://localhost:4141/v1/students \
     -H "Authorization: Bearer {your_access_token}" \
     -H "Content-Type: application/json" \
     -d '{
@@ -140,7 +140,7 @@ curl -X POST http://localhost:4141/students \
 Для удаления студента отправьте DELETE-запрос:
 
 ```bash
-curl -X DELETE http://localhost:4141/students/{id} \
+curl -X DELETE http://localhost:4141/v1/students/{id} \
     -H "Authorization: Bearer {your_access_token}"
 ```
 
@@ -153,4 +153,4 @@ curl -X DELETE http://localhost:4141/students/{id} \
 
 ## Ссылки
 
-- [GitHub репозиторий](https://github.com/onmyodzhi/test_for_smart_data_systems)
+- [GitHub репозиторий](https://github.com/onmyodzhi/test-for-smart-data-systems)
