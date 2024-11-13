@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <changeSet id="1" author="onmyodzhi">
+        <createTable tableName="student" ifNotExists="true">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="surname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="patronymic" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+
+            </column>
+            <column name="group" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="average_score" type="DOUBLE"/>
+
+            <column name="archived" type="BOOLEAN"
+                    defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="onmyodzhi">
+        <createSequence sequenceName="student_id_seq" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="3" author="onmyodzhi">
+        <createIndex indexName="idx_student_group" tableName="student">
+            <column name="group"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,85 @@
+
+spring:
+  liquibase:
+    change-log: ${CHANGE_LOG}
+spring.h2:
+  console:
+    enabled: ${H2_CONSOLE_ENABLED}
+
+logging:
+  level:
+    org.springframework:
+      security: ${LOG_LEVEL}
+server:
+  port: 4141
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: ${MEM_DB_URL}
+    driver-class-name: ${H2_DRIVER_CLASS}
+    username: ${H2_USERNAME}
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO}
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: ${KEYCLOAK_CLIENT_ID}
+            authorization-grant-type: ${KEYCLOAK_GRANT_TYPE}
+            scope:
+              - ${KEYCLOAK_SCOPE}
+        provider:
+          keycloak:
+            issuer-uri: ${KEYCLOAK_ISSUER_URI}
+            user-name-attribute: ${KEYCLOAK_USER_NAME_ATTRIBUTE}
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI}
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: ${DATA_SOURCE_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: ${POSTGRES_DRIVER_CLASS}
+    hikari:
+      maximum-pool-size: ${MAX_POOL_SIZE}
+      minimum-idle: ${MIN_POOL_SIZE}
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO}
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: ${KEYCLOAK_CLIENT_ID}
+            authorization-grant-type: ${KEYCLOAK_GRANT_TYPE}
+            scope:
+              - ${KEYCLOAK_SCOPE}
+        provider:
+          keycloak:
+            issuer-uri: ${PROD_KEYCLOAK_ISSUER_URI}
+            user-name-attribute: ${KEYCLOAK_USER_NAME_ATTRIBUTE}
+      resourceserver:
+        jwt:
+          issuer-uri: ${PROD_KEYCLOAK_ISSUER_URI}
