@@ -153,4 +153,4 @@ curl -X DELETE http://localhost:4141/v1/students/{id} \
 
 ## Ссылки
 
-- [GitHub репозиторий](https://github.com/onmyodzhi/test-for-smart-data-systems)
+- [GitHub репозиторий](https://github.com/onmyodzhi/test-for-smart-delta-systems)
